@@ -1,0 +1,32 @@
+{% extends "head.html" %}
+{% block body %}
+    <script type="text/javascript">
+        $(function(){
+            $('a#test').bind('click', function(){
+                alert("hhh: "+$SCRIPT_ROOT);
+                $.ajax({
+                    url: '/test',
+                    data: $('form').serialize(),
+                    type: 'POST',
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+            $
+        });
+    </script>
+    <form action="{{ url_for('post_blog') }}" method=post class=add-blog>
+        <dl>
+        <dt>Title:
+        <dd><input type=text size=30 name=title>
+        <dt>Text:
+        <dd><textarea name=content rows=5 cols=40></textarea>
+        <dd><input type=submit value=Share>
+        </dl>
+    </form>
+    <a href=# id="test">hello</a>
+{% endblock %}
